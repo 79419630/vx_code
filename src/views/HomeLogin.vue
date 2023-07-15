@@ -11,7 +11,8 @@
 
 <script>
 // @ is an alias to /src
-import LoginData from "../components/LoginData.vue";
+import LoginData from "../components/LoginData";
+
 export default {
   components: {
     LoginData,
@@ -37,7 +38,10 @@ export default {
     width: 300px;
     height: 450px;
     border: 3px beige solid;
+    background-color: rgba(255, 255, 255, 0.164);
     border-radius: 10px;
+    box-shadow: 2px 2px 2px #fff;
+    -webkit-box-shadow: #fff 2px 2px 10px;
 
     .login_content {
       display: flex;
