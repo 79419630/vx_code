@@ -42,7 +42,7 @@ export default {
     .login_content {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end;
       height: 100%;
     }
   }

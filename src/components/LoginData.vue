@@ -15,6 +15,17 @@
         <el-form-item label="密 码:" prop="password">
           <el-input type="password" v-model="ruleForm.password"></el-input>
         </el-form-item>
+        <div class="login_button">
+          <el-form-item>
+            <el-button
+              type="primary"
+              size="small"
+              @click="submitForm('ruleForm')"
+              >立即登录</el-button
+            >
+            <el-button type="primary" size="small">前往注册</el-button>
+          </el-form-item>
+        </div>
       </el-form>
     </div>
   </div>
@@ -30,7 +41,7 @@ export default {
       },
       rules: {
         user: [{ required: true, message: "请输入帐号", trigger: "blur" }],
-        password: [],
+        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
     };
   },
@@ -41,5 +52,13 @@ export default {
   color: white;
   font-weight: 550;
 }
+
+.from_data {
+  margin-bottom: 30px;
+  .from_data_box {
+    .login_button {
+      display: flex;
+    }
+  }
+}
 </style>
-<style></style>
