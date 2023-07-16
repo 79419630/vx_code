@@ -37,13 +37,19 @@ export default {
   .login_home {
     width: 300px;
     height: 450px;
+    display: flex;
+    flex-direction: column;
     border: 3px beige solid;
     background-color: rgba(255, 255, 255, 0.164);
     border-radius: 10px;
     box-shadow: 2px 2px 2px #fff;
     -webkit-box-shadow: #fff 2px 2px 10px;
-
+    .home_img {
+      flex: 1;
+      color: red;
+    }
     .login_content {
+      flex: 1;
       display: flex;
       justify-content: center;
       align-items: flex-end;
