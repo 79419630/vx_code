@@ -16,7 +16,7 @@
           <el-input type="password" v-model="ruleForm.password"></el-input>
         </el-form-item>
         <el-form-item label="邮 箱:" prop="email" v-if="!this.loginOrnot">
-          <el-input type="password" v-model="ruleForm.password"></el-input>
+          <el-input type="email" v-model="ruleForm.email"></el-input>
         </el-form-item>
         <div class="login_button">
           <el-form-item>
@@ -37,14 +37,14 @@
             <el-button
               type="primary"
               size="small"
-              @click="submitForm"
+              @click="returnToLogin"
               v-if="!this.loginOrnot"
               >返回登录</el-button
             >
             <el-button
               type="primary"
               size="small"
-              @click="submitForm"
+              @click="registerNow"
               v-if="!this.loginOrnot"
               >立即注册</el-button
             >
@@ -68,6 +68,14 @@ export default {
       rules: {
         user: [{ required: true, message: "请输入帐号", trigger: "blur" }],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }],
+        email: [
+          { required: true, message: "请输入邮箱", trigger: "blur" },
+          {
+            type: "email",
+            message: "请输入正确的邮箱地址",
+            trigger: ["blur", "change"],
+          },
+        ],
       },
     };
   },
@@ -89,8 +97,30 @@ export default {
         //请求服务器代码
       }
     },
+    registerNow() {
+      if (
+        this.ruleForm.user == "" ||
+        this.ruleForm.password == "" ||
+        this.ruleForm.email == ""
+      ) {
+        this.$alert("输入不正确请重新输入", "错误提示", {
+          type: "error",
+          confirmButtonText: "确定",
+          roundButton: true,
+          showClose: false,
+          callback: () => {
+            return;
+          },
+        });
+      } else {
+        //请求服务器代码
+      }
+    },
     registerUser() {
       this.$router.push({ path: "/RegisterUser" });
+    },
+    returnToLogin() {
+      this.$router.push({ path: "/" });
     },
   },
 };
