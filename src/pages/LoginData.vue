@@ -17,13 +17,12 @@
         </el-form-item>
         <div class="login_button">
           <el-form-item>
-            <el-button
-              type="primary"
-              size="small"
-              @click="submitForm('ruleForm')"
+            <el-button type="primary" size="small" @click="submitForm"
               >立即登录</el-button
             >
-            <el-button type="primary" size="small">前往注册</el-button>
+            <el-button type="primary" size="small" @click="registerUser"
+              >前往注册</el-button
+            >
           </el-form-item>
         </div>
       </el-form>
@@ -45,6 +44,19 @@ export default {
       },
     };
   },
+  methods: {
+    submitForm() {
+      if (this.ruleForm.user == "" || this.ruleForm.password == "") {
+        this.$alert("请输出正常的帐号或密码", "错误提示", {
+          type: "error",
+          confirmButtonText: "确定",
+          roundButton: true,
+          showClose: false,
+        });
+      }
+    },
+    registerUser() {},
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -60,5 +72,11 @@ export default {
       display: flex;
     }
   }
+}
+</style>
+<style>
+.el-message-box {
+  width: 270px !important;
+  border-radius: 2px;
 }
 </style>
