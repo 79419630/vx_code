@@ -19,6 +19,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::v-deep .el-form-item__label {
+  color: white;
+  font-weight: 550;
+}
 .refister {
   height: 100%;
   background: url("../assets/img/loding.jpg");
@@ -52,3 +56,4 @@ export default {
   }
 }
 </style>
+<style></style>

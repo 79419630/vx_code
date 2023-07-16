@@ -101,9 +101,6 @@ export default {
   margin-bottom: 30px;
   .from_data_box {
     display: flex;
-    .login_button {
-      display: flex;
-    }
   }
 }
 </style>
