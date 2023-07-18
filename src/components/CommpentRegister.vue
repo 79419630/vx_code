@@ -1,5 +1,5 @@
 <template>
-  <div class="vb">
+  <div class="commpent">
     <div class="from_data_box">
       <el-form
         :model="ruleForm"
@@ -19,7 +19,7 @@
           <el-input type="email" v-model="ruleForm.email"></el-input>
         </el-form-item>
         <div class="login_button">
-          <el-form-item>
+          <el-form-item class="login_button">
             <el-button
               type="primary"
               size="small"
@@ -81,8 +81,7 @@ export default {
   },
   methods: {
     submitForm() {
-      console.log(this.loginOrnot);
-
+      console.log(this.$store.state.loginOrnot);
       if (this.ruleForm.user == "" || this.ruleForm.password == "") {
         this.$alert("请输出正常的帐号或密码", "错误提示", {
           type: "error",
@@ -117,6 +116,7 @@ export default {
       }
     },
     registerUser() {
+      //this.loginOrnot = !this.loginOrnot;
       this.$router.push({ path: "/RegisterUser" });
     },
     returnToLogin() {
@@ -132,5 +132,10 @@ export default {
   .from_data_box {
     display: flex;
   }
+}
+</style>
+<style>
+.login_button {
+  display: table;
 }
 </style>

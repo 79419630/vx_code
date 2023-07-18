@@ -12,6 +12,7 @@
 <script>
 // @ is an alias to /src
 import LoginData from "../pages/LoginData";
+
 export default {
   components: {
     LoginData,

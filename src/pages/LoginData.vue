@@ -1,15 +1,15 @@
 <template>
   <div class="from_data">
-    <hd :loginOrnot="true"></hd>
+    <CommpentRegister :loginOrnot="true"></CommpentRegister>
   </div>
 </template>
 
 <script>
-import Hd from "../components/Hd";
+import CommpentRegister from "../components/CommpentRegister";
 
 export default {
   components: {
-    Hd,
+    CommpentRegister,
   },
 };
 </script>

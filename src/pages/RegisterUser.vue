@@ -3,17 +3,17 @@
     <div class="refister_user">
       <div class="home_img"><img src="aa" alt="" /></div>
       <div class="refister_content">
-        <Hd></Hd>
+        <CommpentRegister></CommpentRegister>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Hd from "../components/Hd";
+import CommpentRegister from "../components/CommpentRegister";
 export default {
   components: {
-    Hd,
+    CommpentRegister,
   },
 };
 </script>
