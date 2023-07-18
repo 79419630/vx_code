@@ -81,7 +81,6 @@ export default {
   },
   methods: {
     submitForm() {
-      console.log(this.$store.state.loginOrnot);
       if (this.ruleForm.user == "" || this.ruleForm.password == "") {
         this.$alert("请输出正常的帐号或密码", "错误提示", {
           type: "error",

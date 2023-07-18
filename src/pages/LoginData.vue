@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import CommpentRegister from "../components/CommpentRegister";
+import CommpentRegister from "../components/register/CommpentRegister";
 
 export default {
   components: {

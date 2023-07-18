@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import home from "../views/Home.vue";
 import RegisterUser from "@/pages/RegisterUser.vue";
-
+import User from "@/pages/User.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -17,6 +17,12 @@ const routes = [
     name: "RegisterUser",
     component: RegisterUser,
     component: () => import("../pages/RegisterUser.vue"),
+  },
+  {
+    path: "/user",
+    name: "Uesr",
+    component: User,
+    component: () => import("../pages/User.vue"),
   },
 ];
 
