@@ -6,7 +6,8 @@ import store from "./store";
 import ElementUI from "element-ui";
 //外部css
 import "element-ui/lib/theme-chalk/index.css";
-
+//外部字体 阿里巴巴矢量
+import "@/assets/fonts/font_4189160_ps7w4vc908k/iconfont.css";
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
 new Vue({

@@ -25,9 +25,8 @@ export default {
 }
 .refister {
   height: 100%;
-  background: url("../assets/img/loding.jpg");
+  background: url("../assets/imgs/loding.jpg");
   background-size: cover;
-  background-position: -30% center;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
