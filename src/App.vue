@@ -3,7 +3,19 @@
     <router-view />
   </div>
 </template>
-
+<style>
+.el-aside {
+  transition: width 0.25s;
+  -webkit-transition: width 0.25s;
+  -moz-transition: width 0.25s;
+  -webkit-transition: width 0.25s;
+  -o-transition: width 0.25s;
+}
+/*加快侧边栏文字消失的速度*/
+.el-menu {
+  transition: all 10ms;
+}
+</style>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
