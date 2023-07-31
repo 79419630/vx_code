@@ -3,12 +3,19 @@ import VueRouter from "vue-router";
 import home from "../views/Home.vue";
 import RegisterUser from "@/pages/RegisterUser.vue";
 import User from "@/pages/User.vue";
+import UserIndex from "@/pages/main/UserIndex.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
+    component: home,
+    component: () => import("../views/Home.vue"),
+  },
+  {
+    path: "/login",
+    name: "login",
     component: home,
     component: () => import("../views/Home.vue"),
   },
@@ -23,6 +30,27 @@ const routes = [
     name: "Uesr",
     component: User,
     component: () => import("../pages/User.vue"),
+    children: [
+      {
+        path: "/index",
+        component: UserIndex,
+        component: () => import("../pages/main/UserIndex.vue"),
+      },
+      {
+        path: "/users/list",
+        component: () => import("../pages/main/SystemManagement/UserList.vue"),
+      },
+      {
+        path: "/users/manage",
+        component: () =>
+          import("../pages/main/SystemManagement/UserManage.vue"),
+      },
+      {
+        path: "/argument",
+        component: () =>
+          import("../pages/main/SystemManagement/UserArgument.vue"),
+      },
+    ],
   },
 ];
 

@@ -32,14 +32,14 @@
             text-color="#000"
             active-text-color="#409eff"
             :collapse-transition="false"
-            :router="true"
+            router
           >
-            <el-menu-item index="/home">
+            <el-menu-item index="/index">
               <i class="el-icon-s-home"></i>
               <span style="margin-right: 27px">首页</span>
             </el-menu-item>
             <el-submenu
-              v-for="(item, index) in menuItems"
+              v-for="(item, index) in renderedMenuItems"
               :key="index"
               :index="item.route"
             >
@@ -59,7 +59,11 @@
           </el-menu>
         </el-aside>
 
-        <el-main>main</el-main>
+        <el-main>
+          <div class="main_content">
+            <router-view></router-view>
+          </div>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -69,6 +73,7 @@
 export default {
   data() {
     return {
+      currentUserRole: "admin", //用户角色
       isCollapse: true,
       currentMenu: "",
       menuItems: [
@@ -76,31 +81,61 @@ export default {
           title: "系统管理",
           icon: "el-icon-setting",
           route: "/",
-          role: "both",
+          roles: ["admin", "user", "author"],
           children: [
             {
               title: "用户列表",
               route: "/users/list",
+              roles: ["admin"],
             },
             {
-              title: "添加用户",
-              route: "/users/add",
+              title: "角色管理",
+              route: "/users/manage",
+              roles: ["admin"],
+            },
+            {
+              title: "参数设置",
+              route: "/argument",
+              roles: ["admin", "author"],
+            },
+            {
+              title: "授权记录",
+              route: "/code",
+              roles: ["admin", "author", "user"],
+            },
+            {
+              title: "帐号管理",
+              route: "/Accountnumber",
+              roles: ["admin", "author"],
             },
           ],
         },
+
         {
-          title: "个人资料",
+          title: "财务管理",
           icon: "el-icon-s-custom",
-          route: "/profile",
-          role: "user",
+          route: "/money",
+          roles: ["admin", "author", "user"],
           children: [
             {
-              title: "用户列表",
-              route: "/users/list",
+              title: "收支明细",
+              route: "/money/list",
+              roles: ["admin", "author", "user"],
             },
             {
-              title: "添加用户",
-              route: "/users/add",
+              title: "余额提现",
+              route: "/money/withdraw",
+              roles: ["admin", "author", "user"],
+            },
+            {
+              title: "提现管理",
+              route: "/money/manageWithdraw",
+              roles: ["admin"],
+            },
+            {
+              title: "充值接口",
+              route: "/money/play",
+              roles: ["admin"],
             },
           ],
         },
@@ -109,12 +144,28 @@ export default {
   },
   methods: {
     handleSelect(index) {
-      console.log(index);
       this.currentMenu = index;
     },
 
     isShow() {
       this.isCollapse = !this.isCollapse;
+    },
+  },
+  computed: {
+    renderedMenuItems() {
+      const currentUserRole = this.currentUserRole;
+      const filteredMenuItems = this.menuItems.filter((menuItem) => {
+        return menuItem.roles.includes(currentUserRole);
+      });
+      return filteredMenuItems.map((menuItem) => {
+        if (menuItem.children) {
+          const filteredChildren = menuItem.children.filter((childItem) => {
+            return childItem.roles.includes(currentUserRole);
+          });
+          return { ...menuItem, children: filteredChildren };
+        }
+        return menuItem;
+      });
     },
   },
 };
