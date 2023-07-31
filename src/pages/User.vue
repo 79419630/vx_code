@@ -134,7 +134,7 @@ export default {
             },
             {
               title: "充值接口",
-              route: "/money/play",
+              route: "/money/plply",
               roles: ["admin"],
             },
           ],
