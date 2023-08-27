@@ -33,22 +33,48 @@ const routes = [
     children: [
       {
         path: "/index",
-        component: UserIndex,
         component: () => import("../pages/main/UserIndex.vue"),
       },
       {
-        path: "/users/list",
-        component: () => import("../pages/main/SystemManagement/UserList.vue"),
+        path: "/systemList",
+        component: () =>
+          import("../pages/main/SystemManagement/SystemList.vue"),
       },
       {
-        path: "/users/manage",
+        path: "/systemManage",
         component: () =>
-          import("../pages/main/SystemManagement/UserManage.vue"),
+          import("../pages/main/SystemManagement/SystemManage.vue"),
       },
       {
-        path: "/argument",
+        path: "/systemArgument",
         component: () =>
-          import("../pages/main/SystemManagement/UserArgument.vue"),
+          import("../pages/main/SystemManagement/SystemArgument.vue"),
+      },
+      {
+        path: "/systemCode",
+        component: () =>
+          import("../pages/main/SystemManagement/SystemCode.vue"),
+      },
+      {
+        path: "/systemUser",
+        component: () =>
+          import("../pages/main/SystemManagement/SystemUser.vue"),
+      },
+      {
+        path: "/money/list",
+        component: () => import("../pages/main/Money/MoneyList.vue"),
+      },
+      {
+        path: "/money/withdraw",
+        component: () => import("../pages/main/Money/MoneyWithdraw.vue"),
+      },
+      {
+        path: "/money/moneySystem",
+        component: () => import("../pages/main/Money/MoneySystem.vue"),
+      },
+      {
+        path: "/money/Pay",
+        component: () => import("../pages/main/Money/MoneyPay.vue"),
       },
     ],
   },

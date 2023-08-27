@@ -1,9 +1,82 @@
 <template>
-  <div>首页</div>
+  <div class="index_box">
+    <div class="content">
+      <div class="left">
+        <div class="left_content">
+          <div class="img_content"><img :src="img" /></div>
+          <div class="user_list">
+            <div class="user_jurisdiction">当前登录用户:{{ jurisdiction }}</div>
+            <div class="user_money">
+              <p v-if="jurisdiction !== '超级管理员'">
+                当前余额: <span>{{ money }}</span> 元
+              </p>
+              <p v-else>
+                待处理提现:<span>{{ moneyWithdraw }}</span> 条
+              </p>
+            </div>
+          </div>
+        </div>
+        <common-user></common-user>
+      </div>
+      <div class="right"></div>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {};
+import CommonUser from "../../components/common/CommonUser";
+export default {
+  components: {
+    CommonUser,
+  },
+  data() {
+    return {
+      jurisdiction: "超级管理员",
+      money: 100,
+      moneyWithdraw: 3,
+      img: require("../../assets/imgs/user.jpg"),
+    };
+  },
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.index_box {
+  height: 100vh;
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left {
+      display: flex;
+      justify-content: center;
+      .left_content {
+        width: 240px;
+        border-radius: 10px;
+        background-color: #ab9f9fb7;
+        .img_content {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100px;
+
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+          }
+        }
+      }
+      .user_list {
+        .user_money {
+          p {
+            span {
+              color: brown;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</style>

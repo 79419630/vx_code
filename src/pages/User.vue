@@ -85,27 +85,27 @@ export default {
           children: [
             {
               title: "用户列表",
-              route: "/users/list",
+              route: "/systemList",
               roles: ["admin"],
             },
             {
               title: "角色管理",
-              route: "/users/manage",
+              route: "/systemManage",
               roles: ["admin"],
             },
             {
               title: "参数设置",
-              route: "/argument",
+              route: "/systemArgument",
               roles: ["admin", "author"],
             },
             {
               title: "授权记录",
-              route: "/code",
+              route: "/systemCode",
               roles: ["admin", "author", "user"],
             },
             {
               title: "帐号管理",
-              route: "/Accountnumber",
+              route: "/systemUser",
               roles: ["admin", "author"],
             },
           ],
@@ -129,7 +129,7 @@ export default {
             },
             {
               title: "提现管理",
-              route: "/money/manageWithdraw",
+              route: "/money/moneySystem",
               roles: ["admin"],
             },
             {
@@ -200,7 +200,6 @@ export default {
     align-items: center;
     height: 100%;
     background-color: #fff;
-
     .title {
       width: 230px;
       display: flex;
@@ -214,6 +213,9 @@ export default {
       justify-content: space-between;
       align-items: center;
       height: 100%;
+      .user_icon {
+        padding-right: 200px;
+      }
     }
   }
 }
