@@ -16,9 +16,8 @@
             </div>
           </div>
         </div>
-        <common-user></common-user>
       </div>
-      <div class="right"></div>
+      <div class="right"><common-user :userList="userList"></common-user></div>
     </div>
   </div>
 </template>
@@ -35,6 +34,24 @@ export default {
       money: 100,
       moneyWithdraw: 3,
       img: require("../../assets/imgs/user.jpg"),
+      userList: [
+        {
+          title: "帐号详情",
+          data: {
+            totalnum: 100,
+            usedNumber: 50,
+            leftNumber: 50,
+          },
+        },
+        {
+          title: "收入详情",
+          data: {
+            totalnum: 200,
+            usedNumber: 10,
+            leftNumber: 20,
+          },
+        },
+      ],
     };
   },
 };
@@ -45,11 +62,12 @@ export default {
   height: 100vh;
   .content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    background-color: #fff;
     .left {
       display: flex;
       justify-content: center;
+      flex: 1;
       .left_content {
         width: 240px;
         border-radius: 10px;
@@ -76,6 +94,9 @@ export default {
           }
         }
       }
+    }
+    .right {
+      flex: 2;
     }
   }
 }

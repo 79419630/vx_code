@@ -1,11 +1,31 @@
 <template>
   <div class="user">
-    <div class="user_list">
-      <div class="list">
-        <div class="title">我是标题</div>
-        <div class="list_title">总帐号: <span>100</span></div>
-        <div class="list-num">授权:<span>50</span></div>
-        <div class="list-surplus">剩余:<span>60</span></div>
+    <div class="user_content">
+      <div class="list" v-for="(item, index) in userList" :key="index">
+        <div class="user_list" v-if="item.title === '帐号详情'">
+          <div class="title">{{ item.title }}</div>
+          <div class="list_title">
+            总帐号: <span>{{ item.data.totalnum }} 条</span>
+          </div>
+          <div class="list-num">
+            授权:<span>{{ item.data.usedNumber }} 条</span>
+          </div>
+          <div class="list-surplus">
+            剩余:<span>{{ item.data.leftNumber }} 条</span>
+          </div>
+        </div>
+        <div class="user_list" v-else>
+          <div class="title">{{ item.title }}</div>
+          <div class="list_title">
+            总收入: <span>{{ item.data.totalnum }} 元</span>
+          </div>
+          <div class="list-num">
+            昨日收入:<span>{{ item.data.usedNumber }} 元</span>
+          </div>
+          <div class="list-surplus">
+            今日收入:<span>{{ item.data.leftNumber }} 元</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -13,31 +33,29 @@
 
 <script>
 export default {
-  props: [],
+  props: ["userList"],
 };
 </script>
 
 <style lang="scss" scoped>
-.user_list {
-  width: 240px;
-  height: 200px;
-  border-radius: 10px;
-  background-color: blue;
-
+.user_content {
+  display: flex;
+  justify-content: space-around;
   .list {
-    height: 100%;
+    width: 240px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #ab9f9fb7;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .title,
-    .list_title,
-    .list-num,
-    .list-surplus {
-      flex: 1;
+
+    .user_list {
+      height: 100%;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
+      justify-content: space-around;
     }
   }
 }
